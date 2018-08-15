@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="用户管理系统测试套件">
+    <test name="用户管理系统测试用例">
+        <classes>
+            <class name="com.course.cases.adduserTest">
+                <methods>
+                    <include name="adduser"/>
+                </methods>
+            </class>
+            <class name="com.course.cases.loginTest">
+                <methods>
+                    <include name="loginTest"/>
+                </methods>
+            </class>
+            <class name="com.course.cases.getuserinfoTest">
+                <methods>
+                    <include name="getuserinfo"/>
+                </methods>
+            </class>
+            <class name="com.course.cases.getuserinfolistTest">
+                <methods>
+                    <include name="getuserinfolist"/>
+                </methods>
+            </class>
+            <class name="com.course.cases.updateuserinfoTest">
+                <methods>
+                    <include name="updateuser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="com.course.config.ExtentTestNGIReporterListener"/>
+    </listeners>
+</suite>
