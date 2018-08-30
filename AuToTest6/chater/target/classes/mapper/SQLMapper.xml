@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coure">
+    <!--获取登录case-->
+    <select id="logincase" parameterType="Integer" resultType="com.course.model.logincase">
+       select * from logincase where id=#{id};
+   </select>
+    <!--获取添加用户case-->
+    <select id="adduser" parameterType="Integer" resultType="com.course.model.addusercase">
+        select * from addusercase where id=#{id};
+    </select>
+    <!--获取用户信息列表case-->
+    <select id="getuserlist2" parameterType="Integer" resultType="com.course.model.getuserinfolistcase">
+        select * from getuserinfolistcase where id=#{id};
+    </select>
+    <!--获取用户信息case-->
+    <select id="getuserinfo1" parameterType="Integer" resultType="com.course.model.getuserinfocase">
+        select * from getuserinfocase where id=#{id};
+    </select>
+    <!--更新用户信息case-->
+    <select id="updatauser" parameterType="Integer" resultType="com.course.model.updateuserinfocase">
+        select * from updateuserinfocase where id=#{id};
+    </select>
+    <!--添加用户信息-->
+    <select id="addusercase" parameterType="com.course.model.addusercase" resultType="com.course.model.user">
+    select * from user where
+        userName = #{userName}
+        and passWord=#{passWord}
+        and sex=#{sex}
+        and age=#{age}
+        and permission=#{permission}
+        and isDelete=#{isDelete}
+    </select>
+    <!--获取用户信息-->
+    <select id="getuserinfo" parameterType="com.course.model.getuserinfocase" resultType="com.course.model.user">
+        select *from user where id=#{userId}
+    </select>
+    <!--获取用户列表-->
+    <select id="getuserlist" parameterType="com.course.model.getuserinfolistcase" resultType="com.course.model.user">
+        select * from user
+        <trim prefix="WHERE" prefixOverrides="and">
+            <if test="null !=userName and '' !=userName">
+                AND userName=#{userName}
+            </if> <if test="null !=age and '' !=age">
+                AND age=#{age}
+            </if> <if test="null !=sex and '' !=sex">
+                AND sex=#{sex}
+            </if>
+        </trim>
+        ;
+    </select>
+    <!--更新用户信息-->
+    <select id="getupdatauserinfo" parameterType="com.course.model.updateuserinfocase" resultType="com.course.model.user">
+      select * from user
+      <trim prefix="WHERE" prefixOverrides="and">
+          <if test="null !=userName and '' !=userName">
+              AND userName=#{userName}
+          </if><if test="null !=age and '' !=age">
+              AND age=#{age}
+          </if><if test="null !=sex and '' !=sex">
+              AND sex=#{sex}
+          </if><if test="null !=permission and '' !=permission">
+              AND permission=#{permission}
+          </if><if test="null !=isDelete and '' !=isDelete">
+              AND isDelete=#{isDelete}
+          </if><if test="null !=userName and '' !=userName">
+              AND userName=#{userName}
+          </if>
+      </trim>
+        AND id=#{userId}
+    </select>
+</mapper>

@@ -1,0 +1,6 @@
+package com.course.model;
+
+
+public enum InterfaceName {
+    ADDUSERURL,GETUSERINFOURL,GETUSERINFOLISTURL,LOGINURL,UPDATEUSERINFOURL
+}
